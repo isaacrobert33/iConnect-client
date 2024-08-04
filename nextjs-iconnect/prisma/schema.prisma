@@ -28,4 +28,5 @@ model Note {
   status  String
   userId Int
   createdAt String
+  updatedAt String?
 }

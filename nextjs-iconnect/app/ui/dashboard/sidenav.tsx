@@ -56,7 +56,7 @@ export default function SideNav() {
   }, [authToken]);
 
   useEffect(() => {
-    if (session?.state?.apiConfig) {
+    if (session?.state?.apiConfig?.headers?.Authorization) {
       fetchUserProfile();
     }
   }, [session?.state?.apiConfig]);
@@ -71,10 +71,14 @@ export default function SideNav() {
           <div className="w-32 text-white md:w-40">
             <AcmeLogo />
           </div>
-          <div className='flex flex-row items-center justify-start'>
-            <UserCircleIcon className='h-6 w-6 text-white' />
-            <p className={`${lusitana.className} ml-2 font-semibold text-lg text-white`}>{session?.state?.session?.name}</p>
-          </div>
+          {
+            session?.state?.session && (
+              <div className='flex flex-row items-center justify-start'>
+                <UserCircleIcon className='h-6 w-6 text-white' />
+                <p className={`${lusitana.className} ml-2 font-semibold text-lg text-white`}>{session?.state?.session?.name}</p>
+              </div>
+            )
+          }
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">

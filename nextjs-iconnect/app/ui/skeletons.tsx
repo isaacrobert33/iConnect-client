@@ -180,16 +180,16 @@ export function NotesTableSkeleton() {
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
-                  Customer
+                  Title
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Email
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Amount
+                  Body
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Date
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Last Updated Date
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Status
@@ -212,6 +212,32 @@ export function NotesTableSkeleton() {
             </tbody>
           </table>
         </div>
+      </div>
+    </div>
+  );
+}
+
+
+export const NoteEditSkeleton = () => {
+  return (
+    <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-4 rounded-md bg-gray-100 p-4 md:p-6">
+        <div className="relative mb-4">
+          <div className={`${shimmer} mb-2 block rounded bg-white w-60 h-6`}></div>
+          <div className={`${shimmer} mb-2 block rounded-md bg-white w-full h-12`}></div>
+        </div>
+        <div className="relative mb-4">
+          <div className={`${shimmer} mb-2 block rounded bg-white w-60 h-6`}></div>
+          <div className={`${shimmer} mb-2 block rounded-md bg-white w-full h-12`}></div>
+        </div>
+        <div className="relative mb-4">
+          <div className={`${shimmer} mb-2 block rounded bg-white w-60 h-6`}></div>
+          <div className={`${shimmer} mb-2 block rounded-md bg-white w-full h-12`}></div>
+        </div>
+      </div>
+      <div className="flex flex-row relative justify-end gap-4">
+        <div className={`${shimmer} h-10 w-40 rounded bg-gray-100`}></div>
+        <div className={`${shimmer} h-10 w-40 rounded bg-gray-100`}></div>
       </div>
     </div>
   );

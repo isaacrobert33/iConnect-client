@@ -1,11 +1,8 @@
-import Pagination from '@/app/ui/notes/pagination';
 import Search from '@/app/ui/search';
-import Table from '@/app/ui/notes/table';
 import { CreateNote } from '@/app/ui/notes/buttons';
 import { lusitana } from '@/app/ui/fonts';
-import { NotesTableSkeleton } from '@/app/ui/skeletons';
-import { Suspense } from 'react';
 import { Metadata } from 'next';
+import NotesList from '@/app/ui/notes/notes-list';
  
 export const metadata: Metadata = {
   title: 'Notes | iConnect',
@@ -22,7 +19,6 @@ export default async function Page({
   }) {
     const query = searchParams?.query || '';
     const currentPage = Number(searchParams?.page) || 1;
-    const totalPages = 0;
 
   return (
     <div className="w-full">
@@ -33,12 +29,7 @@ export default async function Page({
         <Search placeholder="Search notes..." />
         <CreateNote />
       </div>
-       <Suspense key={query + currentPage} fallback={<NotesTableSkeleton />}>
-        <Table query={query} currentPage={currentPage} />
-      </Suspense>
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPages={totalPages} />
-      </div>
+      <NotesList query={query} currentPage={currentPage} />
     </div>
   );
 }

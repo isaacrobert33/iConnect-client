@@ -16,7 +16,7 @@ export function CreateNote() {
 export function UpdateNote({ id }: { id: string }) {
   return (
     <Link
-      href="/dashboard/invoices"
+      href={`/dashboard/notes/${id}/edit`}
       className="rounded-md border p-2 hover:bg-gray-100"
     >
       <PencilIcon className="w-5" />
@@ -24,10 +24,10 @@ export function UpdateNote({ id }: { id: string }) {
   );
 }
 
-export function DeleteNote({ id }: { id: string }) {
+export function DeleteNote({handleDelete }: { handleDelete?: () => void }) {
   return (
     <>
-      <button className="rounded-md border p-2 hover:bg-gray-100">
+      <button onClick={handleDelete} className="rounded-md border p-2 hover:bg-gray-100">
         <span className="sr-only">Delete</span>
         <TrashIcon className="w-5" />
       </button>
