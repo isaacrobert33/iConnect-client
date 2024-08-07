@@ -1,4 +1,4 @@
-import { readdir, stat, promises } from "fs";
+import { promises, writeFileSync } from "fs";
 import path from "path";
 import { NextResponse } from "next/server"
 import { DirItem } from "@/app/lib/definitions";
@@ -44,6 +44,28 @@ export const GET = async (request: Request) => {
     }, { status: 200 });
 }
 
-export const POST = (request: Request) => {
-    return NextResponse.json({message: 'Fetched successfully.'}, { status: 201 });
+export const POST = async (request: Request) => {
+    const { searchParams } = new URL(request.url);
+    const dirPath = searchParams.get('path') || '/';
+
+    try {
+    // Parse the form data from the request
+    const formData = await request.formData();
+    const file = formData.get('file'); // 'file' is the field name for the file input
+
+    if (!file) {
+      return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
+    }
+
+    const filePath = path.join(dirPath, file.name);
+    const fileBuffer = Buffer.from(await file.arrayBuffer());
+
+    // Save the file to the upload directory
+    writeFileSync(filePath, fileBuffer);
+
+    return NextResponse.json({ message: 'File uploaded successfully', fileName: file.name });
+  } catch (error) {
+    console.error('File upload error:', error);
+    return NextResponse.json({ error: 'File upload failed' }, { status: 500 });
+  }
 }
