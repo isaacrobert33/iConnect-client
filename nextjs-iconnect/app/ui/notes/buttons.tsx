@@ -14,15 +14,15 @@ export function CreateNote() {
   );
 }
 
-export const UploadFile = (): ReactNode => {
+export const UploadFile = ({ onClick }: {onClick: () => void;}): ReactNode => {
   return (
-    <Link
-      href="/dashboard/files/upload"
+    <button
+      onClick={onClick}
       className="flex h-10 items-center rounded-lg bg-teal-600 px-4 text-sm font-medium text-white transition-colors hover:bg-teal-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600"
     >
       <span className="hidden md:block">Upload File</span>{' '}
       <ArrowUpTrayIcon className="h-5 md:ml-4" />
-    </Link>
+    </button>
   );
 }
 

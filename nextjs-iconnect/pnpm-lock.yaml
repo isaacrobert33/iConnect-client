@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@files-ui/react':
+        specifier: ^1.2.4
+        version: 1.2.4(@types/react@18.3.3)(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)
       '@heroicons/react':
         specifier: ^2.1.4
         version: 2.1.4(react@19.0.0-rc-f38c22b244-20240704)
@@ -102,8 +105,21 @@ packages:
       nodemailer:
         optional: true
 
+  '@dynamicss/dynamicss@2.2.8':
+    resolution: {integrity: sha512-e6hrGUydr8f+c9E/9fHFSG5LoSLdq/MdZXXfbzEDWIVuzKF2hcdxZE7nHNqUNF2htw1mZ17Pyoshu3A6kFEeFA==}
+
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
+
+  '@files-ui/core@2.0.7':
+    resolution: {integrity: sha512-L/DqdMWMusULUTrOd6AEpiC+Lkfy9eMNN8LVLzPyfHrUgW9jw2b2Aa5BBJyjdiTHTmd8hM/huc0kVu7CgeZWIQ==}
+
+  '@files-ui/react@1.2.4':
+    resolution: {integrity: sha512-7nOfTNhb5FxG5Lgt2/fec4JjeVFiKzqfRAU3tnrqWMUtRh2v53vZOSO39R58g3A5d5Skh1gQUFSx274wW4ozzw==}
+    peerDependencies:
+      '@types/react': ^17.0.0 || ^18.0.0
+      react: ^17.0.2 || ^18.0.0
+      react-dom: ^17.0.2 || ^18.0.0
 
   '@heroicons/react@2.1.4':
     resolution: {integrity: sha512-ju0wj0wwrUTMQ2Yceyrma7TKuI3BpSjp+qKqV81K9KGcUHdvTMdiwfRc2cwXBp3uXtKuDZkh0v03nWOQnJFv2Q==}
@@ -1277,10 +1293,22 @@ snapshots:
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
 
+  '@dynamicss/dynamicss@2.2.8': {}
+
   '@emnapi/runtime@1.2.0':
     dependencies:
       tslib: 2.6.3
     optional: true
+
+  '@files-ui/core@2.0.7': {}
+
+  '@files-ui/react@1.2.4(@types/react@18.3.3)(react-dom@19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704))(react@19.0.0-rc-f38c22b244-20240704)':
+    dependencies:
+      '@dynamicss/dynamicss': 2.2.8
+      '@files-ui/core': 2.0.7
+      '@types/react': 18.3.3
+      react: 19.0.0-rc-f38c22b244-20240704
+      react-dom: 19.0.0-rc-f38c22b244-20240704(react@19.0.0-rc-f38c22b244-20240704)
 
   '@heroicons/react@2.1.4(react@19.0.0-rc-f38c22b244-20240704)':
     dependencies:
