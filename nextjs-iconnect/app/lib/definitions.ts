@@ -93,3 +93,23 @@ export interface SessionContextProviderProps {
   children: ReactNode;
 }
 
+export type NotesMetrics = {
+  noteCount: number;
+  pinnedNoteCount: number;
+  activeNoteCount: number;
+  archivedNoteCount: number;
+}
+
+export type DirItem = {
+  fullPath: string;
+  name: string;
+  ext: string;
+  isDir: boolean;
+}
+
+
+export type BreadCrumbType = {
+  label: string;
+  href: string;
+  active: boolean;
+}

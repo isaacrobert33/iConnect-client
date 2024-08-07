@@ -1,3 +1,5 @@
+import { BreadCrumbType } from "./definitions";
+
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
     style: 'currency',
@@ -69,3 +71,28 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+
+export const paginate = (array: object[], page: number, itemsPerPage: number) => {
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  return array.slice(start, end);
+}
+
+export const createPathBreadcrumbs = (path: string): BreadCrumbType[] => {
+  const breadcrumbs: BreadCrumbType[] = [];
+  const pathParts = path.split('/').filter(Boolean); // Split by '/' and remove empty parts
+
+  let currentPath = '';
+
+  pathParts.forEach((part, index) => {
+    currentPath += `/${part}`;
+    breadcrumbs.push({
+      label: part,
+      href: `/dashboard/files/?path=${currentPath}&page=1`,
+      active: index + 1 === pathParts.length,
+    });
+  });
+
+  return breadcrumbs;
+}

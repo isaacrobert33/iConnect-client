@@ -26,6 +26,7 @@ export const GET = async (request: Request) => {
 
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q');
+    const status = searchParams.get('status');
     const page = searchParams.get('page') || 1;
     const limit = searchParams.get('limit') || 10;
 
@@ -35,6 +36,7 @@ export const GET = async (request: Request) => {
             { title: { contains: query, mode: 'insensitive' } },
             { body: { contains: query, mode: 'insensitive' } },
         ],
+        status
     }: {};
 
     const [notes, count] = await prisma.$transaction([

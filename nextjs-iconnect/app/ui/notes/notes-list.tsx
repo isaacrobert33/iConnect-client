@@ -16,10 +16,10 @@ const NotesList = ({ currentPage, query }: { currentPage: number, query: string 
 
     const fetchNotes = async () => {
         setLoading(true);
-        await axios.get(`/api/notes?query=${query}&page=${currentPage}`, session?.state?.apiConfig)
+        await axios.get(`/api/notes?q=${query}&page=${currentPage}&limit=10`, session?.state?.apiConfig)
             .then(({ data: { results } }) => {
                 setNotes(results.data);
-                setTotalNotes(results.count);
+                setTotalNotes(Math.ceil(results.count/10));
                 setLoading(false);
             }).catch(({ response: { data } }) => {
                 console.log(data);

@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 import { UserSchema } from "@/app/lib/schema";
 
 
-const LoginSchema = UserSchema.omit({ id: true, name: true })
+const LoginSchema = UserSchema.omit({ id: true, name: true, createdAt: true })
 
 export async function POST(request: Request) {
     const payload = await request.json();
