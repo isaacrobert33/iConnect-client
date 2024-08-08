@@ -42,6 +42,9 @@ export default function SideNav() {
       router.push(`/login?redirect=${pathname}`);
     }
     setAuthToken(token);
+
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    session?.dispatch({type: 'UPDATE_THEME', payload: systemPrefersDark ? 'dark': 'light'})
   }, [])
 
   useEffect(() => {
@@ -83,10 +86,10 @@ export default function SideNav() {
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
-        <div className="hidden h-auto w-full grow rounded-md bg-gray-100 md:block"></div>
-        <button onClick={handleLogout} className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
-          <PowerIcon className="w-6" />
-          <div className="hidden md:block">Sign Out</div>
+        <div className="hidden h-auto w-full grow rounded-md bg-gray-100 dark:bg-gray-800 md:block"></div>
+        <button onClick={handleLogout} className="flex h-[48px] dark:bg-gray-800 w-full grow items-center justify-center gap-2 rounded-md bg-gray-100 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3">
+          <PowerIcon className="w-6 dark:text-white" />
+          <div className="hidden md:block dark:text-white">Sign Out</div>
         </button>
       </div>
     </div>

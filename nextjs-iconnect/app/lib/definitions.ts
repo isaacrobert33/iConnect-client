@@ -83,6 +83,7 @@ export interface SessionContextType {
 
 export interface SessionContextState {
   session: any;
+  theme: any;
   apiConfig: { headers : {
     Authorization: string | null;
     Accept: string;

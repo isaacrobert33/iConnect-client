@@ -10,7 +10,7 @@ const DirectoryGrid = ({files, loading, fetchFiles}: { files: DirItem[], loading
         loading ? (
             <></>
         ) : (
-            <div className="grid gap-6 px-2 py-3 sm:grid-cols-3 lg:grid-cols-6">
+            <div className="grid gap-6 px-2 py-3 grid-cols-2 sm:grid-cols-3 lg:grid-cols-6">
                 {
                     files.map((item, index) => (
                         <DirectoryItem key={`file-${index}`} file={item} />

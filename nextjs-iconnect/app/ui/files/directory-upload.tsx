@@ -24,7 +24,7 @@ const DirectoryUpload = ({path, open, onClose, fetchFiles}: {path: string; open:
             <div className="flex items-center justify-center w-full h-full">
                 <div className={`flex flex-col shadow-2xl rounded-md max-w-96 p-4 bg-white`}>
                     <div className="flex flex-row justify-center items-center">
-                        <p className="text-lg text-semibold">Upload file</p>
+                        <p className="text-lg font-semibold">Upload file</p>
                     </div>
                     <hr className="shrink-0 my-2" />
                     <FileUpload 
