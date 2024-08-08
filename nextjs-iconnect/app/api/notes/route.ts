@@ -31,13 +31,18 @@ export const GET = async (request: Request) => {
     const limit = searchParams.get('limit') || 10;
 
     const { id } = payload as SessionPayload;
-    const searchQuery = query ? {
-        OR: [
+    const searchQuery: { [key: string]: any } = {};
+
+    if (query) {
+        searchQuery["OR"] = [
             { title: { contains: query, mode: 'insensitive' } },
             { body: { contains: query, mode: 'insensitive' } },
-        ],
-        status
-    }: {};
+        ]
+    }
+
+    if (status) {
+        searchQuery["status"] = status;
+    }
 
     const [notes, count] = await prisma.$transaction([
         prisma.note.findMany({

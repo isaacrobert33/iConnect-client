@@ -99,7 +99,7 @@ export default function NotesTable({
                       {/* <td className="whitespace-nowrap px-3 py-3">
                         {note.email}
                       </td> */}
-                      <td className="whitespace-nowrap px-3 py-3">
+                      <td title={note.body} className="whitespace-nowrap px-3 py-3 overflow-hidden text-ellipsis max-w-36">
                         {note.body}
                       </td>
                       <td className="whitespace-nowrap px-3 py-3">

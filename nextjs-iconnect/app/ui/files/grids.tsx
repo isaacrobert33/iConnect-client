@@ -31,12 +31,12 @@ const DirectoryItem = ({ file }: { file: DirItem }) => {
                 </p>
             </Link>
         ) : (
-            <div title={file.name} className="flex flex-col items-center gap-2.5 cursor-pointer max-w-28 max-h-28 hover:border-2 hover:outline-teal-200 rounded-md bg-gray-100 p-2 shadow-sm">
+            <a title={file.name} href={`/api/files/download?path=${file.fullPath}`} target="_blank" className="flex flex-col items-center gap-2.5 cursor-pointer no-underline max-w-28 max-h-28 hover:border-2 hover:outline-teal-200 rounded-md bg-gray-100 p-2 shadow-sm" download={file.name}>
                 <DocumentIcon className="text-teal-700" />
-                <p className={`${lusitana.className} max-w-full text-sm text-ellipsis text-nowrap overflow-hidden`}>
+                <p className={`${lusitana.className} max-w-full text-sm text-black text-ellipsis text-nowrap overflow-hidden`}>
                     {file.name}
                 </p>
-            </div>
+            </a>
         )
     );
 };

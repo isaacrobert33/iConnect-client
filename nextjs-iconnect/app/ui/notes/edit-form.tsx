@@ -23,10 +23,16 @@ export default function EditNoteForm({
   const [response, setResponse] = useState<Response>({success: false, data: null});
   const session = useSession();
   const router = useRouter();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleBodyChange = (e: any) => {
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
+  }
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     setResponse({success: false, data: null});
@@ -71,16 +77,16 @@ export default function EditNoteForm({
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
-              <input
-                id="body"
-                name="body"
-                type="text"
-                value={formData.body}
-                defaultValue={note.body}
-                onChange={handleChange}
-                placeholder="Write your note..."
-                className="peer block w-full h-12 rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-              />
+              <textarea
+                  rows={8}
+                  id="body"
+                  name="body"
+                  value={formData.body}
+                  defaultValue={note.body}
+                  onChange={handleBodyChange}
+                  placeholder="Write your note..."
+                  className="peer block w-full h-40 rounded-md border resize-none border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                />
               <DocumentIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>

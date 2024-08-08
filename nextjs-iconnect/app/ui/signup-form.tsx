@@ -15,7 +15,7 @@ import axios from 'axios';
 import { redirect } from 'next/navigation';
 import { Response } from '../lib/definitions';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
   const [formData, setFormData] = useState({name: '', username: '', password: ''});

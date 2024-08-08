@@ -51,7 +51,7 @@ export const POST = async (request: Request) => {
     try {
     // Parse the form data from the request
     const formData = await request.formData();
-    const file = formData.get('file'); // 'file' is the field name for the file input
+    const file = formData.get('file') as File; // 'file' is the field name for the file input
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });

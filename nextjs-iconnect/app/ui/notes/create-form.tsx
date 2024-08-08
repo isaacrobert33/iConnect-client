@@ -28,6 +28,11 @@ export default function Form() {
     setFormData({...formData, [name]: value});
   }
 
+  const handleBodyChange = (e: any) => {
+    const {name, value} = e.target;
+    setFormData({...formData, [name]: value});
+  }
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     setResponse({success: false, data: null});
     event.preventDefault();
@@ -70,14 +75,14 @@ export default function Form() {
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
-              <input
+              <textarea
+                rows={4}
                 id="body"
                 name="body"
-                type="text"
                 value={formData.body}
-                onChange={handleChange}
+                onChange={handleBodyChange}
                 placeholder="Write your note..."
-                className="peer block w-full h-12 rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                className="peer block w-full h-40 rounded-md border resize-none border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
               />
               <DocumentIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
@@ -145,19 +150,21 @@ export default function Form() {
             </div>
           </div>
         </fieldset>
-        {response.data && (
-            response.success ? (
-              <>
-                <CheckCircleIcon className="h-5 w-5 text-green-500" />
-                <p className="text-sm text-green-500">{response.data.message}</p>
-              </>
-            ) : (
-              <>
-                <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
-                <p className="text-sm text-red-500">{response.data.message}</p>
-              </>
-            )
-          )}
+        <div className={'flex flex-row gap-1'}>
+          {response.data && (
+              response.success ? (
+                <>
+                  <CheckCircleIcon className="h-5 w-5 text-green-500" />
+                  <p className="text-sm text-green-500">{response.data.message}</p>
+                </>
+              ) : (
+                <>
+                  <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                  <p className="text-sm text-red-500">{response.data.message}</p>
+                </>
+              )
+            )}
+        </div>
       </div>
       <div className="mt-6 flex justify-end gap-4">
         <Link

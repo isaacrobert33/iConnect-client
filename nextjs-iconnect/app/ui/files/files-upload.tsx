@@ -9,7 +9,6 @@ import {
     ExtFile
 } from '@files-ui/react';
 import React, {useEffect, useState} from 'react';
-import '../App.css';
 
 const MAX_FILE_SIZE = 100 * 1024*1024;
 
@@ -61,12 +60,12 @@ const FileUpload = ({open, path, uploadUrl, onUploadFinish, onUploadStart=() => 
     }, [open]);
 
     return (
-        <div className='flex flex-col items-center w-full'>
+        <div className='flex flex-col items-center w-full z-12'>
         <Dropzone
             onChange={updateFiles}
             minHeight="195px"
             value={extFiles}
-            accept=".xlsx"
+            // accept="*"
             maxFiles={maxFiles}
             maxFileSize={MAX_FILE_SIZE}
             label="Drag'n drop files here or click to browse"
@@ -78,10 +77,10 @@ const FileUpload = ({open, path, uploadUrl, onUploadFinish, onUploadStart=() => 
             onUploadStart={onUploadStart}
             onUploadFinish={handleFinish}
             actionButtons={{
-            position: 'after',
-            abortButton: {className: 'bg-teal-500'},
-            deleteButton: {className: 'bg-teal-500'},
-            uploadButton: {className: 'bg-teal-500'},
+                position: 'after',
+                abortButton: {className: 'bg-teal-500'},
+                deleteButton: {className: 'bg-teal-500'},
+                uploadButton: {className: 'bg-teal-500'},
             }}
         >
             {extFiles.map((file) => (
